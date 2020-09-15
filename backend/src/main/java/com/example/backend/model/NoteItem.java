@@ -1,0 +1,84 @@
+package com.example.backend.model;
+
+import com.sun.istack.NotNull;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class NoteItem {
+    private Long id;
+    @NotNull
+    private String title;
+    @NotNull
+    private String body;
+    @NotNull
+    private PriorityEnum priority;
+    @NotNull
+    private boolean hasRead;
+    
+    private String bgColor;
+
+    public NoteItem() {
+    }
+
+    public NoteItem(Long id, String title, String body, PriorityEnum priority, boolean hasRead, String bgColor) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.priority = priority;
+        this.hasRead = hasRead;
+        this.bgColor = bgColor;
+    }
+
+    @Id
+    @GeneratedValue
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public PriorityEnum getPriority() {
+        return priority;
+    }
+
+    public void setPriority(PriorityEnum priority) {
+        this.priority = priority;
+    }
+
+    public boolean isHasRead() {
+        return hasRead;
+    }
+
+    public void setHasRead(boolean hasRead) {
+        this.hasRead = hasRead;
+    }
+
+    public String getBgColor() {
+        return bgColor;
+    }
+
+    public void setBgColor(String bgColor) {
+        this.bgColor = bgColor;
+    }
+}
