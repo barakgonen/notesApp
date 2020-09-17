@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app.model.NoteEntity;
+import com.example.app.model.PriorityEnum;
 import com.jakubbilinski.stickystickynotesandroid.R;
 import com.jakubbilinski.stickystickynotesandroid.services.PostService;
 
@@ -50,32 +51,33 @@ public class AddNoteActivity extends AppCompatActivity {
                 String prioritty = priorityTxt.getText().toString();
                 Toast.makeText(getApplicationContext(), "Values: Title: " + title + ", body: " + body + ", priority: " + prioritty, Toast.LENGTH_SHORT).show();
 
-                String url = "http://10.0.2.2:8080/notes";
+                String url = "http://10.0.2.2:8080/notes/";
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("https://jsonplaceholder.typicode.com/")
+                        .baseUrl(url)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
 
                 sendPost();
+                finish();
             }
         });
     }
 
     private void sendPost() {
-//        NoteEntity post = new NoteEntity("blabla", "170820");
-//
-//        Call<NoteEntity> call = postsService.sendPosts(post);
-//        call.enqueue(new Callback<NoteEntity>() {
-//            @Override
-//            public void onResponse(Call<NoteEntity> call, Response<NoteEntity> response) {
-////                lblresponse.setText(response.body().toString());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<NoteEntity> call, Throwable t) {
-//                Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
-//            }
-//
-//        });
+        NoteEntity post = new NoteEntity("a", "b", PriorityEnum.HIGH, false, "");
+
+        Call<NoteEntity> call = postsService.sendPosts(post);
+        call.enqueue(new Callback<NoteEntity>() {
+            @Override
+            public void onResponse(Call<NoteEntity> call, Response<NoteEntity> response) {
+                Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<NoteEntity> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
+            }
+
+        });
     }
 }

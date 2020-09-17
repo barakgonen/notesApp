@@ -17,7 +17,6 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -30,6 +29,9 @@ import com.jakubbilinski.stickystickynotesandroid.services.NotesSynchronizationS
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
 
 public class NotesActivity extends AppCompatActivity {
@@ -59,6 +61,7 @@ public class NotesActivity extends AppCompatActivity {
             public void onClick(View view) {
 //                void onAddButtonClick() {
                 Intent intent = new Intent(getApplicationContext(), AddNoteActivity.class);
+                intent.setFlags(FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivityForResult(intent, 0);
 //        Calendar currentDate = Calendar.getInstance();
 //        NotesEntity newNote = new NotesEntity("",

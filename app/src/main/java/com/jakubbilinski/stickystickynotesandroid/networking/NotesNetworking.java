@@ -5,14 +5,9 @@ import android.os.AsyncTask;
 
 import com.example.app.model.NoteEntity;
 import com.jakubbilinski.stickystickynotesandroid.networking.items.NotesItem;
-import com.jakubbilinski.stickystickynotesandroid.networking.items.ResultItem;
 
 import java.util.List;
 import java.util.concurrent.Callable;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by jbili on 23.11.2017.
