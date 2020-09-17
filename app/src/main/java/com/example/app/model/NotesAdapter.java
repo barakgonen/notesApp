@@ -11,6 +11,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jakubbilinski.stickystickynotesandroid.R;
+import com.jakubbilinski.stickystickynotesandroid.networking.items.NotesItem;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
 
     public static final int COLORS_COUNT = 7;
 
-    private List<NoteEntity> notesList = new ArrayList<>();
+    private List<NoteEntity> notesList;
     private Context context;
     private OnItemClickListener onItemClickListener;
     private OnItemClickListener onItemClickLongListener;
@@ -59,13 +61,13 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
     public void onBindViewHolder(NotesViewHolder holder, int position) {
         final String contextMessage = "TMP DATA";/*notesList.get(position).getContext();*/
         final int idFromList = 1;/*notesList.get(holder.getAdapterPosition()).getId();*/
+        NoteEntity item = notesList.get(position);
 
-        if (!contextMessage.isEmpty()) {
-            holder.textViewNoteContext.setText(contextMessage);
+        if (item != null) {
+            holder.textViewNoteContext.setText(item.getTitle());
         } else {
             holder.textViewNoteContext.setText(context.getString(R.string.empty_note_message));
         }
-//        holder.setLastEditDate(notesList.get(position).getLastEditDate());
         holder.cardViewNote.setCardBackgroundColor(generateColor(2));
 
         holder.cardViewNote.setOnClickListener(view -> {
@@ -123,16 +125,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
 
         CardView cardViewNote;
         TextView textViewNoteContext;
-        TextView textViewLastEditDate;
-
-        private String lastEditDate;
 
         NotesViewHolder(View itemView) {
             super(itemView);
 
             cardViewNote = itemView.findViewById(R.id.cardViewNote);
             textViewNoteContext = itemView.findViewById(R.id.textViewNoteContext);
-            textViewLastEditDate = itemView.findViewById(R.id.textViewDate);
         }
     }
 }

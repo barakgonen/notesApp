@@ -30,8 +30,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.activities.EditorActivity"
-            android:screenOrientation="portrait"/>
+            android:name="com.activities.ShowNoteActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.activities.NotesActivity"/>
         <activity
             android:name="com.activities.AddNoteActivity"
             android:screenOrientation="portrait"

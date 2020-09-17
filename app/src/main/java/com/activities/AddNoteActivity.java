@@ -1,5 +1,7 @@
 package com.activities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -52,19 +54,21 @@ public class AddNoteActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Values: Title: " + title + ", body: " + body + ", priority: " + prioritty, Toast.LENGTH_SHORT).show();
 
                 String url = "http://10.0.2.2:8080/notes/";
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl(url)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-
                 sendPost();
+                Intent returnIntent = new Intent();
+//                returnIntent.putExtra("result", result);
+                setResult(Activity.RESULT_OK, returnIntent);
                 finish();
             }
         });
     }
 
     private void sendPost() {
-        NoteEntity post = new NoteEntity("a", "b", PriorityEnum.HIGH, false, "");
+        String title = titleTxt.getText().toString();
+        String body = bodyTxt.getText().toString();
+        PriorityEnum priority = PriorityEnum.LOW;
+        String bgColor = "BLUE";
+        NoteEntity post = new NoteEntity(title, body, priority, false, bgColor);
 
         Call<NoteEntity> call = postsService.sendPosts(post);
         call.enqueue(new Callback<NoteEntity>() {

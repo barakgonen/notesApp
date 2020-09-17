@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/883323041/NotesApp.iml" filepath="$PROJECT_DIR$/.idea/modules/883323041/NotesApp.iml" group="NotesApp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app.iml" group="NotesApp/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1541767974/backend.iml" filepath="$PROJECT_DIR$/.idea/modules/1541767974/backend.iml" group="NotesApp/backend" />
     </modules>
   </component>
 </project>

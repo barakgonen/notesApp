@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,23 +19,23 @@ import com.example.app.model.NotesAdapter;
 
 import java.util.Calendar;
 
-public class EditorActivity extends AppCompatActivity {
+public class ShowNoteActivity extends AppCompatActivity {
 
-    EditText editTextContext;
-    TextView textViewDate;
-    ConstraintLayout constraintLayoutEditor;
+    TextView txtTitleVal;
+    TextView txtBodyVal;
 
-    private int notePosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_editor);
+        setContentView(R.layout.show_note_activity);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
+        txtTitleVal = findViewById(R.id.titleTxtVal);
+        txtBodyVal = findViewById(R.id.bodyVal);
         Bundle bundle = getIntent().getExtras();
         initSetupFields(bundle);
         setWindowColors(bundle);
@@ -65,10 +66,15 @@ public class EditorActivity extends AppCompatActivity {
 
     private void initSetupFields(Bundle bundle) {
         if (bundle != null) {
-//            notePosition = bundle.getInt(IntentExtras.NOTE_POSITION);
-//            editTextContext.setText(bundle.getString(IntentExtras.NOTE_CONTEXT));
-//            textViewDate.setText(DateConverter.timezoneDateToNormal(bundle.getString(IntentExtras.NOTE_DATE)));
-//            constraintLayoutEditor.setBackgroundColor(bundle.getInt(IntentExtras.NOTE_COLOR));
+            String title = bundle.getString("title");
+            String body = bundle.getString("body");
+            String priority = bundle.getString("priority");
+            String color = bundle.getString("color");
+            String sentece = "Note detailes: titile = " + title + " body = " + body + " priority = " + priority + " color = " + color;
+            txtBodyVal.setText(body);
+            txtTitleVal.setText(title);
+            Toast.makeText(getApplicationContext(), sentece, Toast.LENGTH_LONG).show();
+
         }
     }
 
