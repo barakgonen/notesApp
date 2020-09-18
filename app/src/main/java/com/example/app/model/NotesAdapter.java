@@ -118,7 +118,13 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
 
     @Override
     public int getItemCount() {
-        return notesList.size();
+        try {
+            return notesList.size();
+        }
+        catch (Exception e){
+            System.out.println("EXCEPTION BRO" + e.getMessage());
+            return 0;
+        }
     }
 
     class NotesViewHolder extends RecyclerView.ViewHolder {

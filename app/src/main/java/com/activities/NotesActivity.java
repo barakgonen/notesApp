@@ -121,10 +121,10 @@ public class NotesActivity extends AppCompatActivity {
                 R.color.color_note_5_background
         );
 
-        IntentFilter filter = new IntentFilter("ACTION_BROADCAST_RESPONSE");
-        filter.addCategory(Intent.CATEGORY_DEFAULT);
-        receiver = new ResponseReceiver();
-        registerReceiver(receiver, filter);
+//        IntentFilter filter = new IntentFilter("ACTION_BROADCAST_RESPONSE");
+//        filter.addCategory(Intent.CATEGORY_DEFAULT);
+//        receiver = new ResponseReceiver();
+//        registerReceiver(receiver, filter);
 
         swipeRefreshLayoutNotes.setOnRefreshListener(() -> {
             fetchData();

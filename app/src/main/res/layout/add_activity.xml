@@ -36,12 +36,19 @@
             android:text="Body" />
 
         <EditText
-            android:id="@+id/notePriorityEditTxt"
+            android:id="@+id/backgroundColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Priority" />
+            android:text="background color" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:min="1"
+            android:max="5" />
 
         <Button
             android:id="@+id/saveNoteBtn"

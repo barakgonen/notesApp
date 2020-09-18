@@ -74,6 +74,5 @@ public class NotesSynchronizationService extends IntentService{
             if (currentNotesList.indexOf(noteEntity) != -1)
                 recentPolledNotes.remove(noteEntity);
         currentNotesList.addAll(recentPolledNotes);
-        System.out.println("BB");
     }
 }

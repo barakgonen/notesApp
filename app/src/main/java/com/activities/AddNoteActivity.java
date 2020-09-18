@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,10 +24,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AddNoteActivity extends AppCompatActivity {
 
-    TextView txtView;
     TextView titleTxt;
     TextView bodyTxt;
-    TextView priorityTxt;
+    TextView backGroundColorTxt;
+    SeekBar seekBar;
     Button saveNoteBtsn;
     private PostService postsService;
 
@@ -37,8 +38,9 @@ public class AddNoteActivity extends AppCompatActivity {
 
         titleTxt = findViewById(R.id.noteTitleEditTxt);
         bodyTxt = findViewById(R.id.noteBodyEditTxt);
-        priorityTxt = findViewById(R.id.notePriorityEditTxt);
         saveNoteBtsn = findViewById(R.id.saveNoteBtn);
+        backGroundColorTxt = findViewById(R.id.backgroundColor);
+        seekBar = findViewById(R.id.seekBar);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.2.2:8080/notes/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -50,11 +52,12 @@ public class AddNoteActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String title = titleTxt.getText().toString();
                 String body = bodyTxt.getText().toString();
-                String prioritty = priorityTxt.getText().toString();
-                Toast.makeText(getApplicationContext(), "Values: Title: " + title + ", body: " + body + ", priority: " + prioritty, Toast.LENGTH_SHORT).show();
+                PriorityEnum priorityEnum = PriorityEnum.values()[seekBar.getProgress() - 1];
+                String backGroundColor = backGroundColorTxt.getText().toString();
+                Toast.makeText(getApplicationContext(), "Values: Title: " + title + ", body: " + body + ", priority: " + priorityEnum.toString(), Toast.LENGTH_SHORT).show();
 
                 String url = "http://10.0.2.2:8080/notes/";
-                sendPost();
+                sendPost(title, body, priorityEnum, backGroundColor);
                 Intent returnIntent = new Intent();
 //                returnIntent.putExtra("result", result);
                 setResult(Activity.RESULT_OK, returnIntent);
@@ -63,12 +66,8 @@ public class AddNoteActivity extends AppCompatActivity {
         });
     }
 
-    private void sendPost() {
-        String title = titleTxt.getText().toString();
-        String body = bodyTxt.getText().toString();
-        PriorityEnum priority = PriorityEnum.LOW;
-        String bgColor = "BLUE";
-        NoteEntity post = new NoteEntity(title, body, priority, false, bgColor);
+    private void sendPost(String title, String body, PriorityEnum priorityEnum, String color) {
+        NoteEntity post = new NoteEntity(title, body, priorityEnum, false, color);
 
         Call<NoteEntity> call = postsService.sendPosts(post);
         call.enqueue(new Callback<NoteEntity>() {
