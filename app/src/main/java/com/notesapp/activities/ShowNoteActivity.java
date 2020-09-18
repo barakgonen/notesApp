@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.jakubbilinski.stickystickynotesandroid.R;
+import com.example.notesapp.R;
 
 public class ShowNoteActivity extends AppCompatActivity {
 

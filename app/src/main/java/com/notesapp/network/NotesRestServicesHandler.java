@@ -23,16 +23,18 @@ public class NotesRestServicesHandler {
 
     private static AsyncHttpClient client;
     private static Gson GSON;
+    private static String baseUrl;
 
     private NotesRestServicesHandler() {
         client = Dsl.asyncHttpClient();
         GSON = new Gson();
+        baseUrl = "http://10.0.2.2:8080/notes/";
     }
 
-    public static List<NoteEntity> fetchAllNotesFromServer(Context context) {
-        Request getRequest = Dsl.get("http://10.0.2.2:8080/notes/").build();
+    public static List<NoteEntity> fetchAllNotesFromServer() {
         if (client == null)
             new NotesRestServicesHandler();
+        Request getRequest = Dsl.get(baseUrl).build();
 
         ListenableFuture<Response> responseFuture = client.executeRequest(getRequest);
         try {
@@ -48,7 +50,7 @@ public class NotesRestServicesHandler {
     }
 
     public static boolean deleteNote(Long id) {
-        Request deleteRequest = Dsl.delete("http://10.0.2.2:8080/notes/" + id).build();
+        Request deleteRequest = Dsl.delete(baseUrl + id).build();
         ListenableFuture<Response> responseFuture = client.executeRequest(deleteRequest);
         try {
             responseFuture.get();
@@ -63,7 +65,7 @@ public class NotesRestServicesHandler {
     public static boolean addNote(NoteEntity entityNoteToAdd) {
         Request s = new RequestBuilder(HttpConstants.Methods.POST)
                 .setBody(GSON.toJson(entityNoteToAdd))
-                .setUrl("http://10.0.2.2:8080/notes/postNote/")
+                .setUrl(baseUrl + "postNote/")
                 .build();
         s.getHeaders().add("Content-Type", "application/json");
 

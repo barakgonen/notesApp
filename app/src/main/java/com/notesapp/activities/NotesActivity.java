@@ -1,8 +1,6 @@
 package com.notesapp.activities;
 
 import android.annotation.SuppressLint;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.notesapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.jakubbilinski.stickystickynotesandroid.R;
 import com.notesapp.model.NoteEntity;
 import com.notesapp.model.NotesAdapter;
 import com.notesapp.network.NotesRestServicesHandler;
@@ -56,14 +54,8 @@ public class NotesActivity extends AppCompatActivity {
     }
 
     private void fetchAllNotesFromServer() {
-        fetchData();
+        notesList = NotesRestServicesHandler.fetchAllNotesFromServer();
         reDrawNotes();
-    }
-
-    private void fetchData() {
-        notesList = NotesRestServicesHandler.fetchAllNotesFromServer(getApplicationContext());
-        for (NoteEntity entity : notesList)
-            System.out.println(entity);
     }
 
     private void setupRecycler() {
@@ -79,29 +71,14 @@ public class NotesActivity extends AppCompatActivity {
         }
     }
 
-    private void refreshingServiceFinished() {
-        swipeRefreshLayoutNotes.setRefreshing(false);
-        new GetAllNotes().execute();
-    }
-
-    public class ResponseReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            NotesActivity.this.refreshingServiceFinished();
-        }
-    }
-
     private class GetAllNotes extends AsyncTask<Void, Void, List<NoteEntity>> {
 
         @Override
         protected List<NoteEntity> doInBackground(Void... voids) {
-            List<NoteEntity> n = NotesRestServicesHandler.fetchAllNotesFromServer(getApplicationContext());
+            List<NoteEntity> n = NotesRestServicesHandler.fetchAllNotesFromServer();
             return n;
         }
-
-        // Suppressing error message due to the bug in latest Android Build Tools
-        // More info: https://issuetracker.google.com/issues/37130193
+        
         @SuppressLint("RestrictedApi")
         @Override
         protected void onPostExecute(List<NoteEntity> notesEntities) {

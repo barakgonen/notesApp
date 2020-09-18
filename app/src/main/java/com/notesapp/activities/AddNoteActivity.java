@@ -11,8 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.example.notesapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.jakubbilinski.stickystickynotesandroid.R;
 import com.notesapp.model.NoteEntity;
 import com.notesapp.model.PriorityEnum;
 import com.notesapp.network.NotesRestServicesHandler;
