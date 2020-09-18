@@ -1,7 +1,5 @@
 package com.example.backend.model;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,15 +7,10 @@ import javax.persistence.Id;
 @Entity
 public class NoteItem {
     private Long id;
-    @NotNull
     private String title;
-    @NotNull
     private String body;
-    @NotNull
     private PriorityEnum priority;
-    @NotNull
     private boolean hasRead;
-    
     private String bgColor;
 
     public NoteItem() {
