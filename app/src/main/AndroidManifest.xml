@@ -16,12 +16,9 @@
         android:allowClearUserData="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/MainTheme">
-        <service
-            android:name=".services.NotesSynchronizationService"
-            android:exported="false" />
 
         <activity
-            android:name="com.activities.NotesActivity"
+            android:name="com.notesapp.activities.NotesActivity"
             android:theme="@style/LandingTheme"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -30,13 +27,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.activities.ShowNoteActivity"
+            android:name="com.notesapp.activities.ShowNoteActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName="com.activities.NotesActivity"/>
+            android:parentActivityName="com.notesapp.activities.NotesActivity"/>
         <activity
-            android:name="com.activities.AddNoteActivity"
+            android:name="com.notesapp.activities.AddNoteActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName="com.activities.NotesActivity"/>
+            android:parentActivityName="com.notesapp.activities.NotesActivity"/>
     </application>
 
 </manifest>

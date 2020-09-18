@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:transitionName="@string/animation_transition_note_background"
-    tools:context="com.activities.ShowNoteActivity"
+    tools:context="com.notesapp.activities.ShowNoteActivity"
     android:gravity="center">
 
     <androidx.constraintlayout.widget.Guideline
