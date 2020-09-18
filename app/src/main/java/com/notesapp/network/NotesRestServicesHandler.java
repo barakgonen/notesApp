@@ -1,7 +1,5 @@
 package com.notesapp.network;
 
-import android.content.Context;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.notesapp.model.NoteEntity;
@@ -34,7 +32,7 @@ public class NotesRestServicesHandler {
     public static List<NoteEntity> fetchAllNotesFromServer() {
         if (client == null)
             new NotesRestServicesHandler();
-        Request getRequest = Dsl.get(baseUrl).build();
+        Request getRequest = Dsl.get(baseUrl + "all/").build();
 
         ListenableFuture<Response> responseFuture = client.executeRequest(getRequest);
         try {
@@ -50,7 +48,7 @@ public class NotesRestServicesHandler {
     }
 
     public static boolean deleteNote(Long id) {
-        Request deleteRequest = Dsl.delete(baseUrl + id).build();
+        Request deleteRequest = Dsl.delete(baseUrl + "delete/" + id).build();
         ListenableFuture<Response> responseFuture = client.executeRequest(deleteRequest);
         try {
             responseFuture.get();
@@ -65,7 +63,7 @@ public class NotesRestServicesHandler {
     public static boolean addNote(NoteEntity entityNoteToAdd) {
         Request s = new RequestBuilder(HttpConstants.Methods.POST)
                 .setBody(GSON.toJson(entityNoteToAdd))
-                .setUrl(baseUrl + "postNote/")
+                .setUrl(baseUrl + "add/")
                 .build();
         s.getHeaders().add("Content-Type", "application/json");
 
