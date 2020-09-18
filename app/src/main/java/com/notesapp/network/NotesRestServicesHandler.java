@@ -19,10 +19,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-/**
- * Created by jbili on 07.11.2017.
- */
-
 public class NotesRestServicesHandler {
 
     private static AsyncHttpClient client;

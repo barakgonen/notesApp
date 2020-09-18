@@ -15,11 +15,10 @@
         android:supportsRtl="true"
         android:allowClearUserData="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/MainTheme">
+        android:theme="@style/ViewAllNotesTheme">
 
         <activity
             android:name="com.notesapp.activities.NotesActivity"
-            android:theme="@style/LandingTheme"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,10 +39,9 @@ public class NotesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
-        // Initialize components
+
         addNoteBtn = findViewById(R.id.floatingActionButtonAdd);
         recyclerViewNotes = findViewById(R.id.RecyclerViewNotes);
-
         addNoteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,13 +64,6 @@ public class NotesActivity extends AppCompatActivity {
         notesList = NotesRestServicesHandler.fetchAllNotesFromServer(getApplicationContext());
         for (NoteEntity entity : notesList)
             System.out.println(entity);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_notes, menu);
-        return true;
     }
 
     private void setupRecycler() {
@@ -121,7 +111,7 @@ public class NotesActivity extends AppCompatActivity {
     }
 
     private void reDrawNotes() {
-        notesAdapter = new NotesAdapter(NotesActivity.this, notesList);
+        notesAdapter = new NotesAdapter(notesList);
 
         recyclerViewNotes.setAdapter(notesAdapter);
         recyclerViewNotes.setLayoutManager(new StaggeredGridLayoutManager(
@@ -135,7 +125,7 @@ public class NotesActivity extends AppCompatActivity {
             intent.putExtra("title", toExpand.getTitle());
             intent.putExtra("body", toExpand.getBody());
             intent.putExtra("priority", toExpand.getPriority().toString());
-            intent.putExtra("color", toExpand.getBgColor());
+            intent.putExtra("color", String.valueOf(toExpand.getBgColor()));
             startActivityForResult(intent, 0);
         });
 

@@ -56,5 +56,6 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation'org.asynchttpclient:async-http-client:2.12.1'
+    implementation 'petrov.kristiyan:colorpicker-library:1.1.10'
 
 }

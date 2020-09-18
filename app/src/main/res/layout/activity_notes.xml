@@ -17,10 +17,16 @@
         app:layout_constraintBottom_toBottomOf="@+id/RecyclerViewNotes"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@android:drawable/ic_input_add"
-        app:srcCompat="@drawable/add" android:focusable="true"/>
+        app:srcCompat="@drawable/add"
+        android:focusable="true"
+        android:theme="@style/ViewAllNotesTheme"
+        app:backgroundTint="@color/cardview_dark_background"
+        />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RecyclerViewNotes"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerViewNotes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

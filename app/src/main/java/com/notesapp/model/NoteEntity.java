@@ -6,9 +6,9 @@ public class NoteEntity {
     private String body;
     private PriorityEnum priority;
     private boolean hasRead;
-    private String bgColor;
+    private int bgColor;
 
-    public NoteEntity(String title, String body, PriorityEnum priority, boolean hasRead, String bgColor) {
+    public NoteEntity(String title, String body, PriorityEnum priority, boolean hasRead, int bgColor) {
         this.title = title;
         this.body = body;
         this.priority = priority;
@@ -56,11 +56,11 @@ public class NoteEntity {
         this.hasRead = hasRead;
     }
 
-    public String getBgColor() {
+    public Integer getBgColor() {
         return bgColor;
     }
 
-    public void setBgColor(String bgColor) {
+    public void setBgColor(int bgColor) {
         this.bgColor = bgColor;
     }
 

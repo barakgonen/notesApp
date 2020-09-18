@@ -1,40 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#8BC34A</color>
-    <color name="primary_dark">#689F38</color>
-    <color name="primary_light">#DCEDC8</color>
-    <color name="accent">#FF5722</color>
-    <color name="primary_text">#212121</color>
-    <color name="secondary_text">#757575</color>
-    <color name="icons">#212121</color>
-    <color name="divider">#0D000000</color>
-    <color name="white">#FFFFFF</color>
+    <color name="blue">#2062af</color>
+    <color name="color2">#58AEB7</color>
+    <color name="color3">#F4B528</color>
+    <color name="color4">#DD3E48</color>
+    <color name="color5">#BF89AE</color>
 
-    <color name="color_note_0_background">#FF8A80</color>
-    <color name="color_note_0_primary">#F44336</color>
-    <color name="color_note_0_primary_dark">#D32F2F</color>
+    <color name="color6">#5C88BE</color>
+    <color name="color7">#59BC10</color>
+    <color name="color8">#E87034</color>
+    <color name="color9">#f84c44</color>
+    <color name="color10">#8c47fb</color>
 
-    <color name="color_note_1_background">#FFD180</color>
-    <color name="color_note_1_primary">#FF9800</color>
-    <color name="color_note_1_primary_dark">#F57C00</color>
+    <color name="color11">#51C1EE</color>
+    <color name="color12">#8cc453</color>
+    <color name="color13">#C2987D</color>
+    <color name="color14">#CE7777</color>
+    <color name="color15">#9086BA</color>
 
-    <color name="color_note_2_background">#FFFF8D</color>
-    <color name="color_note_2_primary">#FFEB3B</color>
-    <color name="color_note_2_primary_dark">#FBC02D</color>
-
-    <color name="color_note_3_background">#CCFF90</color>
-    <color name="color_note_3_primary">#8BC34A</color>
-    <color name="color_note_3_primary_dark">#689F38</color>
-
-    <color name="color_note_4_background">#D7CCC8</color>
-    <color name="color_note_4_primary">#795548</color>
-    <color name="color_note_4_primary_dark">#5D4037</color>
-
-    <color name="color_note_5_background">#80D8FF</color>
-    <color name="color_note_5_primary">#03A9F4</color>
-    <color name="color_note_5_primary_dark">#0288D1</color>
-
-    <color name="color_note_6_background">#CFD8DC</color>
-    <color name="color_note_6_primary">#607D8B</color>
-    <color name="color_note_6_primary_dark">#455A64</color>
+    <color name="white">#ffffff</color>
+    <color name="lite_blue">#42a5f5</color>
+    <color name="black_de">#000000</color>
 </resources>

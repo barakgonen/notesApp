@@ -35,13 +35,20 @@
             android:inputType="textPersonName"
             android:text="Body" />
 
-        <EditText
-            android:id="@+id/backgroundColor"
-            android:layout_width="match_parent"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/colorPickerButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="background color" />
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_color_picker"
+            app:backgroundTint="@android:color/transparent"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/noteBodyEditTxt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_color_picker" />
 
         <SeekBar
             android:id="@+id/seekBar"
@@ -49,7 +56,6 @@
             android:layout_height="wrap_content"
             android:min="1"
             android:max="5" />
-
         <Button
             android:id="@+id/saveNoteBtn"
             android:layout_width="wrap_content"
